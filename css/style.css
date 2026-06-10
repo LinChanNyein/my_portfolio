@@ -1,0 +1,1010 @@
+/* ================= VARIABLES ================= */
+:root {
+  --primary: #f9f9f9;
+  --secondary: #121212;
+  --white: #f9f9f9;
+  --black: #121212;
+  --primary-transperant: #f9f9f9cd;
+  --secondary-transperant: #12121215;
+  --secondary-transperant-2: #12121208;
+  --transition-speed: 0.3s;
+}
+
+.night {
+  --primary: #121212;
+  --secondary: #f9f9f9;
+  --white: #f9f9f9;
+  --black: #121212;
+  --primary-transperant: #12121215;
+  --secondary-transperant: #f9f9f915;
+  --secondary-transperant-2: #f9f9f908;
+  --transition-speed: 0.3s;
+}
+
+/* ================= FONTS ================= */
+@font-face {
+  font-family: "Sansation";
+  src: url("../font/Sansation-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Sansation-Light";
+  src: url("../font/Sansation-Light.ttf");
+}
+
+@font-face {
+  font-family: "Sansation-Bold";
+  src: url("../font/Sansation-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Sansation-Bold-Italic";
+  src: url("../font/Sansation-BoldItalic.ttf");
+}
+
+@font-face {
+  font-family: "Sansation-Italic";
+  src: url("../font/Sansation-Italic.ttf");
+}
+
+@font-face {
+  font-family: "Glinken";
+  src: url("../font/Glinken.otf");
+}
+
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--primary);
+  color: var(--secondary);
+}
+
+/* Navbar */
+
+.header-main {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.padding_lr {
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+.padding_t {
+  padding-top: 20px;
+}
+
+.margin_t {
+  margin-top: 70px;
+}
+
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: var(--primary-transperant);
+  backdrop-filter: blur(10px);
+  color: var(--secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.header.hide {
+  transform: translateY(-100%);
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  height: auto;
+  color: var(--secondary);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.logo img {
+  width: 100%;
+}
+
+.navlinks {
+  width: auto;
+  display: flex;
+  gap: 100px;
+  align-items: center;
+}
+
+.navlink {
+  width: auto + 5px;
+  height: auto;
+  text-decoration: none;
+  color: var(--secondary);
+  font-family: "Sansation";
+  font-size: 16px;
+  width: auto;
+  height: auto;
+  transition: var(--transition-speed);
+  padding: 0 5px;
+}
+
+.day_night {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition-speed);
+  padding: 2px;
+  border-radius: 50px;
+  background-color: none;
+}
+
+.day_night .cls-1 {
+  fill: #80808000;
+  color: var(--secondary);
+  stroke-width: 40;
+  transition: var(--transition-speed);
+}
+
+.day_night:hover {
+  background-color: var(--secondary-transperant);
+}
+
+.day_night:hover .cls-1 {
+  fill: var(--secondary);
+  transition: var(--transition-speed);
+}
+
+.sun,
+.moon {
+  transition: var(--transition-speed);
+}
+
+.sun {
+  display: none;
+}
+
+body.night .moon {
+  display: none;
+}
+
+body.night .sun {
+  display: flex;
+}
+
+.now_nav {
+  border-bottom: 1px solid var(--secondary);
+}
+
+.navlink:hover {
+  transform: translateY(-5px);
+}
+
+.now_nav:hover {
+  transform: none;
+}
+
+.small-header {
+  display: none;
+}
+
+.small_nav_div {
+  position: absolute;
+  background-color: var(--primary);
+  top: 80px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+}
+
+.small_navlink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  text-decoration: none;
+  color: var(--secondary);
+  font-family: "Sansation";
+  font-size: 25px;
+  border-bottom: 2px solid var(--secondary);
+  padding-left: 63px;
+  padding-right: 73px;
+}
+
+.small_navlink div {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary);
+  border-radius: 50px;
+  border: 3px solid var(--secondary);
+}
+
+.small_navlink div img {
+  width: 80%;
+}
+
+.hamburger-icon {
+  color: var(--secondary);
+}
+
+.cross-icon,
+.small_nav_div {
+  display: none;
+}
+
+.menu-toggle.menu-open .hamburger-icon {
+  display: none;
+}
+
+.menu-toggle.menu-open .cross-icon {
+  display: flex;
+}
+
+.small_nav_div.menu-open {
+  display: flex;
+}
+
+/* landing */
+.landing_whole {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* border-bottom: 1px solid var(--white); */
+}
+
+.blah {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.blah img {
+  width: 90%;
+}
+
+.landing_bg {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.track {
+  height: 100%;
+  display: flex;
+  width: max-content;
+  opacity: 0.1;
+  animation: scroll 30s linear infinite;
+}
+
+.track path {
+  fill: var(--secondary);
+}
+
+.track img {
+  height: 100%;
+  opacity: 0.1;
+  flex-shrink: 0;
+}
+
+/* infinite movement */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.landing_text_whole {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  gap: 30px;
+}
+
+.landing_text {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.landing_text_f {
+  font-family: "Sansation";
+  color: var(--secondary);
+  font-size: 22px;
+}
+
+.landing_text_s1 {
+  width: 460px;
+  height: auto;
+}
+
+.landing_text_s1 path {
+  fill: var(--secondary);
+}
+
+.landing_text_s2 path {
+  fill: var(--secondary);
+}
+
+.landing_text_s2 {
+  width: 569px;
+  height: auto;
+}
+
+.landing_text_s2 img {
+  width: 100%;
+}
+
+.landing_text_s1 img {
+  width: 100%;
+}
+
+.landing_btn {
+  width: 600px;
+  height: 40px;
+  display: flex;
+  gap: 80px;
+  margin-top: 40px;
+}
+
+.landing_btn_s {
+  width: 50%;
+  height: 100%;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Sansation";
+  border: 1px solid color-mix(in srgb, var(--white) 40%, transparent);
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: var(--black);
+  color: var(--white);
+  transition: var(--transition-speed);
+  letter-spacing: 1px;
+}
+
+.landing_btn_s:hover {
+  width: 60%;
+}
+
+/* about_sum */
+
+.about_sum {
+  width: 100%;
+  height: 80px;
+  background-color: var(--black);
+}
+
+/* design_landing */
+.design_landing {
+  position: relative;
+  width: 100%;
+  height: 584px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.design_landing_img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.design_landing_img.active {
+  opacity: 1;
+}
+
+.design_landing_img img {
+  height: 100%;
+}
+
+.design_landing_text {
+  position: absolute;
+  left: 105px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.design_landing_text a {
+  text-decoration: none;
+  font-family: "Glinken";
+  color: var(--white);
+  font-size: 85px;
+  letter-spacing: 2px;
+  opacity: 0.3;
+  transition: 0.3s ease;
+}
+
+.design_landing_text a:hover {
+  opacity: 1;
+}
+
+/* whole_mani_sec */
+.whole_mani_sec {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mani_text_whole {
+  width: 550px;
+  height: auto;
+  position: fixed;
+  padding-left: 5px;
+}
+
+.mani_text_header {
+  width: 400px;
+  font-family: "Glinken";
+  font-size: 85px;
+  color: var(--secondary);
+  line-height: 85px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.mani_text_para {
+  width: 100%;
+  font-family: "Sansation";
+  font-size: 16px;
+  text-align: justify;
+  line-height: 24px;
+  color: var(--secondary);
+}
+
+.mani_btn {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  gap: 60px;
+  margin-top: 40px;
+}
+
+.mani_btn a {
+  width: 50%;
+  height: 100%;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Sansation";
+  border: 1px solid color-mix(in srgb, var(--white) 30%, transparent);
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: var(--black);
+  color: var(--white);
+  transition: var(--transition-speed);
+  letter-spacing: 1px;
+}
+
+.mani_btn a:hover {
+  width: 60%;
+}
+
+.mani_photo {
+  position: absolute;
+  right: 90px;
+  width: 620px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.mani_hori_photo {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mhp_div {
+  width: 300px;
+  height: 400px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mani_verti_photo {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mhp_div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mani_verti_photo img {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* always define transition on the element that changes */
+.map_h img {
+  transition: var(--transition-speed);
+}
+
+/* dim state */
+.map_h.dim img {
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+.map_h img:hover {
+  transform: scale(1.05);
+}
+
+/* About */
+.whole_about {
+  width: 100%;
+  height: 100vh;
+  margin-top: 80px;
+  padding-top: 10px;
+  display: flex;
+  gap: 100px;
+}
+
+.about_img {
+  width: 350px;
+  height: 500px;
+  border: 2px solid black;
+}
+
+.about_img_inner {
+  width: 350px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/img/about_lcn_c.jpg");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  position: fixed;
+}
+
+.about_img_inner img {
+  width: 100%;
+  height: 100%;
+  transition: var(--transition-speed);
+}
+
+.about_img_inner img:hover {
+  opacity: 0;
+}
+
+.about_text {
+  flex: 1;
+  height: 100%;
+}
+
+.about_name {
+  font-family: "Glinken";
+  color: var(--secondary);
+  font-size: 75px;
+  display: flex;
+  flex-direction: column;
+  line-height: 60px;
+}
+
+.about_name div {
+  font-family: "Sansation-Bold-Italic";
+  font-size: 20px;
+}
+
+.about_name div span {
+  font-family: "Sansation-Bold";
+  font-size: 25px;
+}
+
+.about_roles {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding: 13px 0;
+  border-bottom: 2px solid var(--secondary);
+  padding-left: 15px;
+}
+
+.about_roles_f {
+  border-top: 2px solid var(--secondary);
+}
+
+.about_role {
+  width: 320px;
+  height: auto;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.about_role_img {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  background-color: var(--secondary);
+  border-radius: 7px;
+}
+
+.about_role_img img {
+  height: 100%;
+}
+
+.about_role_text {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  color: var(--secondary);
+  padding-top: 5px;
+}
+
+.about_role_text1 {
+  font-family: "Sansation";
+  font-size: 16px;
+  line-height: 10px;
+}
+
+.about_role_text2 {
+  font-family: "Sansation-Bold";
+  font-size: 19px;
+  margin-top: 2px;
+}
+
+.spec_text {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.spec {
+  margin: 0;
+}
+
+.spec_text_whole {
+  border: none;
+}
+
+.spec_word {
+  height: auto;
+  width: auto;
+  font-family: "Sansation-Bold";
+  font-size: 22px;
+  color: var(--secondary);
+  margin-top: 13px;
+  margin-bottom: 4px;
+  padding-left: 5px;
+}
+
+.spec_text_whol_2 {
+  padding-bottom: 20px;
+}
+
+/* Contact */
+.contact_whole {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.contact_text {
+  width: 400px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.contact_hello {
+  font-family: "Glinken";
+  font-size: 75px;
+  color: var(--secondary);
+  line-height: 60px;
+}
+
+.contact_text p {
+  font-family: "Sansation";
+  font-size: 16px;
+  color: var(--secondary);
+  text-align: justify;
+  line-height: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.contact_btn {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact_btn_spec {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  background-color: var(--black);
+  border: 1px solid color-mix(in srgb, var(--white) 20%, transparent);
+  border-radius: 4px;
+  padding-left: 10px;
+  text-decoration: none;
+  transition: var(--transition-speed);
+}
+
+.contact_btn_spec:hover {
+  padding-left: 20px;
+}
+
+.contact_btn_spec div {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+}
+
+.mail .cls-1 {
+  color: var(--white);
+  stroke-width: 45px;
+}
+
+.whatsapp path {
+  fill: var(--white);
+}
+
+.link_be {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+  width: 100%;
+  height: max-content;
+}
+
+.link_be a {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition-speed);
+}
+
+.link_be a:hover {
+  transform: translateY(-5px);
+}
+
+.linkedin {
+  padding-bottom: 4px;
+}
+
+.link_be a path,
+rect {
+  fill: var(--secondary);
+}
+
+.contact_btn_spec span {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Sansation";
+  font-size: 16px;
+  color: var(--white);
+  transition: var(--transition-speed);
+  letter-spacing: 1px;
+}
+
+.contact_form {
+  width: 600px;
+  height: auto;
+  background-color: var(--secondary-transperant-2);
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  border-radius: 5px;
+}
+
+.contact_form input,
+textarea {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+
+  padding-left: 10px;
+  font-family: "Sansation";
+  color: var(--secondary);
+  border: 1px solid color-mix(in srgb, var(--secondary) 20%, transparent);
+  background-color: transparent;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+.contact_form textarea {
+  padding-top: 7px;
+  height: 130px;
+}
+
+.contact_form button {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black);
+  border: none;
+  font-family: "Sansation";
+  font-size: 17px;
+  color: var(--white);
+  border-radius: 3px;
+}
+
+/* media */
+
+@media (max-width: 980px) {
+  .header-big {
+    display: none;
+  }
+
+  .small-header {
+    display: flex;
+  }
+
+  .padding_lr {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media (max-width: 660px) {
+  .header {
+    height: 70px;
+  }
+
+  .padding_lr {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .margin_t {
+    margin-top: 70px;
+  }
+
+  .logo {
+    width: 45px;
+  }
+
+  .landing_text_f {
+    font-size: 20px;
+  }
+
+  .landing_text_s1 {
+    width: 417px;
+  }
+
+  .landing_text_s2 {
+    width: 515px;
+  }
+}
+
+@media (max-width: 450px) {
+  .header {
+    height: 60px;
+  }
+
+  .padding_lr {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .margin_t {
+    margin-top: 60px;
+  }
+
+  .logo {
+    width: 40px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header {
+    height: 60px;
+  }
+
+  .padding_lr {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .margin_t {
+    margin-top: 60px;
+  }
+}

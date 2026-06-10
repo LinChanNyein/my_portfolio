@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 60px;
+      }
+    </style>
+  </defs>
+  <g id="Environment__x2F__Sun">
+    <path id="Vector" class="cls-1" d="M400,160v-60M400,640v60M232.43,232.43l-42.43-42.43M571.84,571.84l42.43,42.43M160,400h-60M640,400h60M571.86,232.43l42.43-42.43M232.44,571.84l-42.43,42.43M400,540.28c-77.47,0-140.28-62.8-140.28-140.28s62.8-140.28,140.28-140.28,140.28,62.8,140.28,140.28-62.8,140.28-140.28,140.28Z"/>
+  </g>
+</svg>
