@@ -89,7 +89,7 @@ body {
 
 .header {
   width: 100%;
-  height: 70px;
+  height: 75px;
   background-color: var(--primary-transperant);
   backdrop-filter: blur(10px);
   color: var(--secondary);
@@ -220,15 +220,15 @@ body.night .sun {
 }
 
 .small_nav_div {
-  position: absolute;
+  display: none;
+  position: fixed;
   background-color: var(--primary);
-  top: 80px;
   width: 100%;
   height: 100%;
-  display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 999;
+  top: 75px;
 }
 
 .small_navlink {
@@ -242,8 +242,6 @@ body.night .sun {
   font-family: "Sansation";
   font-size: 25px;
   border-bottom: 2px solid var(--secondary);
-  padding-left: 63px;
-  padding-right: 73px;
 }
 
 .small_navlink div {
@@ -255,14 +253,24 @@ body.night .sun {
   background-color: var(--primary);
   border-radius: 50px;
   border: 3px solid var(--secondary);
+  padding: 5px;
 }
 
-.small_navlink div img {
-  width: 80%;
+.small_navlink div .cls-1 {
+  color: var(--secondary);
+  stroke-width: 45px;
 }
 
 .hamburger-icon {
   color: var(--secondary);
+}
+
+.hamburger-icon .cls-1 {
+  stroke-width: 35px;
+}
+
+.cross-icon .cls-1 {
+  stroke-width: 35px;
 }
 
 .cross-icon,
@@ -396,7 +404,7 @@ body.night .sun {
 }
 
 .landing_btn {
-  width: 600px;
+  width: 670px;
   height: 40px;
   display: flex;
   gap: 80px;
@@ -1002,6 +1010,13 @@ textarea {
 }
 
 /* media */
+
+@media (min-width: 890px) {
+  .small_nav_div,
+  .small_nav_div.menu-open {
+    display: none;
+  }
+}
 
 @media (max-width: 890px) {
   .header-big {
