@@ -137,7 +137,7 @@ body {
 
 .navlink {
   width: auto + 5px;
-  height: 30px;
+  height: 25px;
   text-decoration: none;
   color: var(--secondary);
   font-family: "Sansation";
@@ -500,7 +500,7 @@ body.night .sun {
 }
 
 .mani_text_whole {
-  flex: 1;
+  width: 40%;
   height: 100vh;
   position: sticky;
   top: 70px;
@@ -555,7 +555,7 @@ body.night .sun {
 }
 
 .mani_photo {
-  width: 620px;
+  flex: 1;
   height: max-content;
   display: flex;
   flex-direction: column;
@@ -570,11 +570,12 @@ body.night .sun {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
 }
 
 .mhp_div {
-  width: 300px;
-  height: 400px;
+  width: 50%;
+  height: auto;
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -594,7 +595,7 @@ body.night .sun {
 
 .mhp_div img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
 }
 
@@ -615,7 +616,7 @@ body.night .sun {
 }
 
 .map_h img:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 /* About */
