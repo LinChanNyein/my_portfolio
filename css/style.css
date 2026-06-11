@@ -1120,7 +1120,7 @@ textarea {
   .landing_btn {
     height: 37px;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 15px;
   }
 
   .landing_btn_s {
@@ -1140,7 +1140,6 @@ textarea {
 
   .landing_btn {
     flex-direction: column;
-    width: 100%;
     height: auto;
   }
 
