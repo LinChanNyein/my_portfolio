@@ -84,7 +84,7 @@ body {
 }
 
 .margin_t {
-  margin-top: 70px;
+  margin-top: 75px;
 }
 
 .header {
@@ -453,6 +453,59 @@ body.night .sun {
   width: 100%;
   height: 80px;
   background-color: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about_sum_over {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+}
+
+.about_sum_spec {
+  width: auto;
+  height: auto;
+  display: flex;
+  border: 1px solid var(--white);
+  border-radius: 50px;
+  padding: 4px 25px 4px 15px;
+  gap: 15px;
+}
+
+.about_sum_spec_icon {
+  width: 30px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about_sum_spec_icon path {
+  fill: var(--white);
+  stroke-width: 0;
+}
+
+.about_sum_spec_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about_sum_spec_text span {
+  color: var(--white);
+  font-family: "Sansation";
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.about_sum_spec_text .span1 {
+  color: rgba(255, 255, 255, 0.549);
+  font-size: 13px;
 }
 
 /* design_landing */
@@ -550,7 +603,6 @@ body.night .sun {
 
 .mani_btn {
   width: 100%;
-  height: 40px;
   display: flex;
   gap: 60px;
   margin-top: 40px;
@@ -558,24 +610,41 @@ body.night .sun {
 
 .mani_btn a {
   width: 50%;
-  height: 100%;
+  height: 40px;
   max-width: 350px;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Sansation";
   border: 1px solid color-mix(in srgb, var(--white) 30%, transparent);
-  font-size: 18px;
   border-radius: 5px;
   background-color: var(--black);
+}
+
+.mani_btn a div {
+  text-decoration: none;
+  height: 26px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Sansation";
+  font-size: 18px;
   color: var(--white);
   transition: var(--transition-speed);
   letter-spacing: 1px;
+  overflow: hidden;
 }
 
-.mani_btn a:hover {
-  transform: translateY(-5px);
+.mani_btn a div span {
+  transition: var(--transition-speed);
+  text-decoration: none;
+}
+
+.mani_btn a:hover div .span1 {
+  transform: translateY(-27px);
+}
+
+.mani_btn a:hover div .span2 {
+  transform: translateY(-27px);
 }
 
 .mani_photo {
@@ -798,9 +867,65 @@ body.night .sun {
 }
 
 /* Contact */
-.contact_whole {
+.pom {
   width: 100%;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+}
+
+/* both images */
+.pom img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  inset: 0;
+}
+
+/* spotlight layer */
+.top {
+  z-index: 2;
+
+  /* BIGGER + SOFTER BRUSH */
+  mask-image: radial-gradient(
+    circle 500px at var(--x, 0%) var(--y, 0%),
+    transparent 0%,
+    transparent 40%,
+    black 61%,
+    black 100%
+  );
+
+  -webkit-mask-image: radial-gradient(
+    circle 500px at var(--x, 0%) var(--y, 0%),
+    transparent 0%,
+    transparent 40%,
+    black 61%,
+    black 100%
+  );
+
+  transition: mask-image 0.15s ease;
+}
+
+/* FULL REVEAL MODE */
+.pom.revealed .top {
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+.contact_whole {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.contact_whole_index {
+  width: 100%;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -944,6 +1069,16 @@ textarea {
   background-color: transparent;
   border-radius: 3px;
   letter-spacing: 0.5px;
+  resize: none;
+  outline: none;
+}
+
+.contact_form input:focus {
+  outline: 3px solid color-mix(in srgb, var(--secondary) 10%, transparent);
+}
+
+.contact_form textarea:focus {
+  outline: 3px solid color-mix(in srgb, var(--secondary) 10%, transparent);
 }
 
 .contact_form textarea {
@@ -963,6 +1098,21 @@ textarea {
   font-size: 17px;
   color: var(--white);
   border-radius: 3px;
+}
+
+.contact_form button div {
+  height: 26px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.contact_form button div span {
+  transition: var(--transition-speed);
+}
+
+.contact_form button:hover div span {
+  transform: translateY(-26px);
 }
 
 /* Each Photo */
@@ -999,7 +1149,7 @@ textarea {
 .main_ph_vid_header {
   width: 100%;
   display: flex;
-  justify-content: right;
+  justify-content: left;
 }
 
 .main_ph_vid_img {

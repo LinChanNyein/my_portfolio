@@ -133,3 +133,19 @@ function initImageTransitions() {
     });
   });
 }
+
+/* =========================
+   CAT
+========================= */
+
+const pom = document.querySelector(".pom");
+
+pom.addEventListener("mousemove", (e) => {
+  const rect = pom.getBoundingClientRect();
+
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  pom.style.setProperty("--x", `${x}px`);
+  pom.style.setProperty("--y", `${y}px`);
+});
