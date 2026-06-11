@@ -19,31 +19,6 @@ fetch("navbar.html")
   });
 
 /* =========================
-   THEME TOGGLE (DAY / NIGHT)
-========================= */
-
-function initThemeToggle() {
-  const toggle = document.querySelector(".day_night");
-
-  if (!toggle) return;
-
-  // apply saved theme on every page load
-  const savedTheme = localStorage.getItem("theme");
-
-  if (savedTheme === "night") {
-    document.body.classList.add("night");
-  }
-
-  toggle.addEventListener("click", () => {
-    document.body.classList.toggle("night");
-
-    // save theme
-    const isNight = document.body.classList.contains("night");
-    localStorage.setItem("theme", isNight ? "night" : "day");
-  });
-}
-
-/* =========================
    SMALL NAV (MENU TOGGLE)
 ========================= */
 
@@ -83,6 +58,33 @@ function initHeaderScroll() {
     }
 
     lastScrollY = currentScrollY;
+  });
+}
+
+/* =========================
+   THEME TOGGLE (DAY / NIGHT)
+========================= */
+
+function initThemeToggle() {
+  const toggles = document.querySelectorAll(".day_night");
+
+  if (!toggles.length) return;
+
+  // apply saved theme on every page load
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "night") {
+    document.body.classList.add("night");
+  }
+
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("night");
+
+      // save theme
+      const isNight = document.body.classList.contains("night");
+      localStorage.setItem("theme", isNight ? "night" : "day");
+    });
   });
 }
 

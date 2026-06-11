@@ -149,8 +149,8 @@ body {
 }
 
 .day_night {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -164,7 +164,7 @@ body {
 .day_night .cls-1 {
   fill: #80808000;
   color: var(--secondary);
-  stroke-width: 40;
+  stroke-width: 31px;
   transition: var(--transition-speed);
 }
 
@@ -192,6 +192,12 @@ body.night .moon {
 
 body.night .sun {
   display: flex;
+}
+
+.day_night_small {
+  padding: 0;
+  width: 50px;
+  height: 50px;
 }
 
 .now_nav {
@@ -276,6 +282,15 @@ body.night .sun {
 .cross-icon,
 .small_nav_div {
   display: none;
+}
+
+.sun_moon_ham {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .menu-toggle.menu-open .hamburger-icon {
