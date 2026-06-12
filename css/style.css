@@ -718,7 +718,6 @@ body.night .sun {
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 20px;
 }
@@ -1241,6 +1240,16 @@ textarea {
 
 /* media */
 
+@media (max-width: 990px) {
+  .mani_hori_photo {
+    flex-direction: column;
+  }
+
+  .mani_hori_photo .mhp_div {
+    width: 100%;
+  }
+}
+
 @media (min-width: 890px) {
   .small_nav_div,
   .small_nav_div.menu-open {
@@ -1272,6 +1281,45 @@ textarea {
 
   .landing_btn {
     width: 560px;
+  }
+}
+
+@media (max-width: 750px) {
+  .mani_hori_photo {
+    flex-direction: row;
+  }
+
+  .mani_hori_photo .mhp_div {
+    width: 50%;
+  }
+
+  .whole_mani_sec {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .mani_text_whole {
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    top: auto;
+  }
+
+  .mani_btn {
+    display: none;
+  }
+
+  .mani_photo {
+    width: 100%;
+  }
+
+  .mani_text_header {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -1364,6 +1412,24 @@ textarea {
   .padding_lr {
     padding-left: 40px;
     padding-right: 40px;
+  }
+
+  .mani_hori_photo {
+    flex-direction: column;
+  }
+
+  .mani_hori_photo .mhp_div {
+    width: 100%;
+  }
+
+  .mani_text_header {
+    font-size: 70px;
+    line-height: 70px;
+  }
+
+  .mani_text_para {
+    font-size: 15px;
+    line-height: 25px;
   }
 }
 
