@@ -18,6 +18,7 @@
 
   <body>
     <div id="navbar"></div>
+    <div class="cursor-dot"></div>
     <!-- landing -->
 
     <div class="landing_whole margin_t">
@@ -135,8 +136,8 @@
       </div>
       <div class="landing_text_whole">
         <div class="landing_text">
-          <div class="landing_text_f">My Name is</div>
-          <div class="landing_text_s1">
+          <div class="landing_text_f reveal_left">My Name is</div>
+          <div class="landing_text_s1 reveal_left">
             <svg
               id="Layer_1"
               xmlns="http://www.w3.org/2000/svg"
@@ -176,8 +177,8 @@
           </div>
         </div>
         <div class="landing_text">
-          <div class="landing_text_f">I am a</div>
-          <div class="landing_text_s2">
+          <div class="landing_text_f reveal_right">I am a</div>
+          <div class="landing_text_s2 reveal_right">
             <?xml version="1.0" encoding="UTF-8"?>
             <svg
               id="Layer_1"
@@ -229,7 +230,7 @@
           </div>
         </div>
 
-        <div class="landing_btn">
+        <div class="landing_btn reveal">
           <a href="#" class="landing_btn_s btn_b">View Design</a>
           <a href="#" class="landing_btn_s">Contact Me</a>
         </div>
@@ -329,14 +330,14 @@
 
     <div class="contact_whole_index padding_lr">
       <div class="contact_text">
-        <div class="contact_hello">HELLO,</div>
-        <p>
+        <div class="contact_hello reveal">HELLO,</div>
+        <p class="reveal">
           I’m currently seeking a junior or part-time graphic designer role,
           with a focus on photo manipulation, advertising, and social media
           design. If you’d like to get in touch, feel free to contact me via
           email, WhatsApp, LinkedIn, or Behance.
         </p>
-        <div class="contact_btn">
+        <div class="contact_btn reveal">
           <div class="link_be">
             <a class="linkedin" href="">
               <svg
@@ -368,7 +369,7 @@
 
           <a
             href="mailto:Lin Chan Nyein://linchan2016.lc@gmail.com"
-            class="contact_btn_spec"
+            class="contact_btn_spec reveal"
           >
             <div>
               <svg
@@ -406,7 +407,7 @@
             <span>linchan2016.lc@gmail.com</span>
           </a>
 
-          <a href="" class="contact_btn_spec">
+          <a href="" class="contact_btn_spec reveal">
             <div>
               <svg
                 class="whatsapp"
@@ -424,11 +425,23 @@
         </div>
       </div>
 
-      <form action="" method="post" id="contact_form" class="contact_form">
-        <input type="text" name="name" placeholder="Enter your Name" required />
+      <form
+        action=""
+        method="post"
+        id="contact_form"
+        class="contact_form reveal"
+      >
+        <input
+          type="text"
+          class="reveal"
+          name="name"
+          placeholder="Enter your Name"
+          required
+        />
 
         <input
           type="email"
+          class="reveal"
           name="email"
           placeholder="Enter your Email"
           required
@@ -436,6 +449,7 @@
 
         <input
           type="text"
+          class="reveal"
           name="subject"
           placeholder="Enter your Subject"
           required
@@ -443,12 +457,13 @@
 
         <textarea
           name="message"
+          class="reveal"
           rows="6"
           placeholder="Enter your Message"
           required
         ></textarea>
 
-        <button type="submit">
+        <button type="submit" class="reveal">
           <div>
             <span>Send Message</span>
             <span>Send Message</span>

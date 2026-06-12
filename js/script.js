@@ -7,15 +7,23 @@ fetch("navbar.html")
   .then((data) => {
     document.getElementById("navbar").innerHTML = data;
 
-    // init everything AFTER navbar loads
     initSmallNav();
     initHeaderScroll();
     initHoverEffects();
     initImageTransitions();
     initThemeToggle();
-  })
-  .catch((err) => {
-    console.error("Failed to load navbar:", err);
+
+    const dot = document.querySelector(".cursor-dot");
+
+    if (!dot) {
+      console.error("cursor-dot not found in navbar.html");
+      return;
+    }
+
+    document.addEventListener("mousemove", (e) => {
+      dot.style.left = e.clientX + "px";
+      dot.style.top = e.clientY + "px";
+    });
   });
 
 /* =========================
@@ -60,6 +68,38 @@ function initHeaderScroll() {
     lastScrollY = currentScrollY;
   });
 }
+
+/* =========================
+   Animation SCROLL
+========================= */
+
+function createObserver(selector) {
+  const elements = document.querySelectorAll(selector);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        } else {
+          entry.target.classList.remove("active");
+        }
+      });
+    },
+    {
+      threshold: 0,
+      rootMargin: "0px 0px -20px 0px",
+    },
+  );
+
+  elements.forEach((el) => observer.observe(el));
+}
+
+// init all 3
+createObserver(".reveal");
+createObserver(".reveal_left");
+createObserver(".reveal_right");
+createObserver(".reveal_fade");
 
 /* =========================
    THEME TOGGLE (DAY / NIGHT)

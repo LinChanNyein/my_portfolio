@@ -64,6 +64,61 @@ body {
   color: var(--secondary);
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal_fade {
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.reveal_fade.active {
+  opacity: 1;
+}
+
+.reveal_right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: all 0.6s ease;
+}
+
+.reveal_right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal_left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 0.6s ease;
+}
+
+.reveal_left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cursor-dot {
+  width: 30px;
+  height: 30px;
+  backdrop-filter: blur(5px); /* change to white if you want */
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
 /* Navbar */
 
 .header-main {
@@ -869,19 +924,28 @@ body.night .sun {
 /* Contact */
 .pom {
   width: 100%;
-  height: 100vh;
+  height: auto;
   position: relative;
   overflow: hidden;
-  cursor: none;
+  border-radius: 5px;
+  /* cursor: none; */
+}
+
+.pom_contact {
+  height: 100vh;
 }
 
 /* both images */
-.pom img {
+.pom .base {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+}
+
+.pom .top {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* spotlight layer */
@@ -890,7 +954,7 @@ body.night .sun {
 
   /* BIGGER + SOFTER BRUSH */
   mask-image: radial-gradient(
-    circle 500px at var(--x, 0%) var(--y, 0%),
+    circle 300px at var(--x, 0%) var(--y, 0%),
     transparent 0%,
     transparent 40%,
     black 61%,
@@ -898,7 +962,7 @@ body.night .sun {
   );
 
   -webkit-mask-image: radial-gradient(
-    circle 500px at var(--x, 0%) var(--y, 0%),
+    circle 300px at var(--x, 0%) var(--y, 0%),
     transparent 0%,
     transparent 40%,
     black 61%,
@@ -1053,6 +1117,7 @@ rect {
   padding: 20px;
   gap: 20px;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .contact_form input,
