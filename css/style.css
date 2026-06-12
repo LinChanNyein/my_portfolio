@@ -75,13 +75,15 @@ body {
   transform: translateY(0);
 }
 
-.reveal_fade {
+.reveal_little_up {
   opacity: 0;
+  transform: translateY(10px);
   transition: all 0.6s ease;
 }
 
-.reveal_fade.active {
+.reveal_little_up.active {
   opacity: 1;
+  transform: translateY(0px);
 }
 
 .reveal_right {

@@ -99,7 +99,7 @@ function createObserver(selector) {
 createObserver(".reveal");
 createObserver(".reveal_left");
 createObserver(".reveal_right");
-createObserver(".reveal_fade");
+createObserver(".reveal_little_up");
 
 /* =========================
    THEME TOGGLE (DAY / NIGHT)
