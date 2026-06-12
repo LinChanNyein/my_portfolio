@@ -1414,6 +1414,10 @@ textarea {
     padding-right: 40px;
   }
 
+  .whole_mani_sec {
+    gap: 15px;
+  }
+
   .mani_hori_photo {
     flex-direction: column;
   }
