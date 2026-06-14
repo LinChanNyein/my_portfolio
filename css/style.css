@@ -1238,6 +1238,34 @@ textarea {
   gap: 75px;
 }
 
+.zooming_image {
+  top: 10px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  gap: 50px;
+}
+
+.zooming_image_div {
+  height: 80%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zooming_image_div img {
+  width: auto;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
 /* media */
 @media (max-width: 1205px) {
   .mani_btn {
