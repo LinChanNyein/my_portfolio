@@ -929,6 +929,7 @@ body.night .sun {
   position: relative;
   overflow: hidden;
   border-radius: 5px;
+  cursor: pointer;
   /* cursor: none; */
 }
 
@@ -1225,6 +1226,7 @@ textarea {
 }
 
 .main_ph_vid_img img {
+  cursor: pointer;
   width: 100%;
 }
 
@@ -1232,6 +1234,7 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .whole_each_sec_verti {
@@ -1239,12 +1242,13 @@ textarea {
 }
 
 .zooming_image {
-  top: 10px;
+  top: 0px;
+  padding-top: 10px;
   position: fixed;
   z-index: 100;
   width: 100%;
   height: 100vh;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(10px);
@@ -1252,11 +1256,17 @@ textarea {
 }
 
 .zooming_image_div {
-  height: 80%;
+  height: 95%;
   width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.zooming_image span {
+  cursor: pointer;
 }
 
 .zooming_image_div img {
@@ -1264,6 +1274,31 @@ textarea {
   height: 100%;
   object-position: center;
   object-fit: cover;
+}
+
+.zooming_image_div video {
+  width: auto;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
+.zooming_image.active {
+  display: flex;
+}
+
+.zooming_image_div {
+  cursor: grab;
+}
+
+.zooming_image_div:active {
+  cursor: grabbing;
+}
+
+.zooming_image_div img,
+.zooming_image_div video {
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* media */

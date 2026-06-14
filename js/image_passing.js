@@ -1,3 +1,6 @@
+/* =========================
+   CONTENT
+========================= */
 const content = {
   peace_above_terror: {
     title: "Peace Above Terror",
@@ -11,7 +14,7 @@ const content = {
     ],
     video: "vid/croco.mp4",
     poster: "img/manipulation-ori/croco.jpg",
-    text: "I started out trying to make a simple wallpaper, but it gradually turned into a darker, atmospheric piece inspired by underwater creature edits and thalassophobia themes, centered around a crocodile. The idea was to show a man sleeping peacefully on a calm lake, representing serenity, while a giant crocodile moves beneath his boat, hidden in the depths. In the end, I liked the contrast between the calm surface and the tension underneath, especially how the orange boat stands out against the bluish-green lake environment. I titled it “Peace Above Terror” to reflect that duality.",
+    text: "...",
   },
 
   unseen: {
@@ -31,15 +34,21 @@ const content = {
 };
 
 /* =========================
-   PAGE DETECTION
+   PAGE CHECK
 ========================= */
-const path = window.location.pathname;
-
 const isDetailPage =
-  path.includes("detail.html") || path.includes("details.html");
+  window.location.pathname.includes("detail.html") ||
+  window.location.pathname.includes("details.html");
 
 /* =========================
-   GALLERY PAGES
+   GLOBAL STATE
+========================= */
+let data = null;
+let gallery = [];
+let currentIndex = 0;
+
+/* =========================
+   GALLERY CLICK (PAGE 1)
 ========================= */
 if (!isDetailPage) {
   document.querySelectorAll(".mani_verti_photo, .mhp_div").forEach((item) => {
@@ -48,78 +57,103 @@ if (!isDetailPage) {
 
       const id = item.dataset.id;
 
-      // choose page based on class OR attribute if needed
-      const targetPage = item.classList.contains("mhp_div")
+      const page = item.classList.contains("mhp_div")
         ? "details.html"
         : "detail.html";
 
-      window.location.href = `${targetPage}?id=${id}`;
+      window.location.href = `${page}?id=${id}`;
     });
   });
 }
 
 /* =========================
-   DETAIL + DETAILS PAGES
+   LOAD DETAIL PAGE DATA
 ========================= */
 if (isDetailPage) {
   const id = new URLSearchParams(window.location.search).get("id");
-  const data = content[id];
 
-  if (!data) {
-    console.error("No content found:", id);
-  } else {
-    // TITLE + TEXT
+  data = content[id];
+
+  if (data) {
     document.querySelector(".mani_text_header").textContent = data.title;
     document.querySelector(".mani_text_para").textContent = data.text;
 
-    // MAIN IMAGE
-    const mainImg = document.querySelectorAll(".main_ph_vid_img")[0];
-    mainImg.querySelector("img").src = data.images[0];
+    document.querySelectorAll(".main_ph_vid_img")[0].querySelector("img").src =
+      data.images[0];
 
-    // RAW FINAL
     const pom = document.querySelector(".pom");
     pom.querySelector(".base").src = data.raw_final[0];
     pom.querySelector(".top").src = data.raw_final[1];
 
-    // VIDEO
     const video = document
       .querySelectorAll(".main_ph_vid_img")[1]
       .querySelector("video");
 
     video.src = data.video;
     video.poster = data.poster;
+
+    gallery = [
+      { type: "image", src: data.images[0] },
+      { type: "image", src: data.raw_final[1] },
+      { type: "video", src: data.video, poster: data.poster },
+    ];
   }
 }
 
 /* =========================
-   ZOOM GALLERY
+   ZOOM ELEMENTS
 ========================= */
-
 const zoom = document.querySelector(".zooming_image");
 const zoomContainer = document.querySelector(".zooming_image_div");
 
 const prevBtn = document.querySelector(".zooming_image_prev");
 const nextBtn = document.querySelector(".zooming_image_next");
 
-let currentIndex = 0;
+/* =========================
+   ZOOM STATE
+========================= */
+let scale = 1;
+let posX = 0;
+let posY = 0;
 
-const gallery = [
-  {
-    type: "image",
-    src: data.images[0],
-  },
-  {
-    type: "image",
-    src: data.raw_final[1],
-  },
-  {
-    type: "video",
-    src: data.video,
-    poster: data.poster,
-  },
-];
+let isDragging = false;
+let startX = 0;
+let startY = 0;
 
+/* =========================
+   APPLY TRANSFORM
+========================= */
+function applyTransform() {
+  const media = zoomContainer.querySelector("img, video");
+
+  if (!media) return;
+
+  // container size
+  const containerRect = zoomContainer.getBoundingClientRect();
+
+  // scale-based image size estimate
+  const scaledWidth = containerRect.width * scale;
+  const scaledHeight = containerRect.height * scale;
+
+  // max movement (how far you can drag)
+  const maxX = Math.max(0, (scaledWidth - containerRect.width) / 2);
+  const maxY = Math.max(0, (scaledHeight - containerRect.height) / 2);
+
+  // clamp position
+  posX = Math.max(-maxX, Math.min(maxX, posX));
+  posY = Math.max(-maxY, Math.min(maxY, posY));
+
+  media.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+
+  zoomContainer.style.cursor = scale > 1 ? "grab" : "default";
+}
+
+/* =========================
+   RENDER GALLERY ITEM
+========================= */
 function renderGalleryItem(index) {
+  if (!gallery.length) return;
+
   zoomContainer.innerHTML = "";
 
   const item = gallery[index];
@@ -127,7 +161,6 @@ function renderGalleryItem(index) {
   if (item.type === "image") {
     const img = document.createElement("img");
     img.src = item.src;
-
     zoomContainer.appendChild(img);
   }
 
@@ -137,7 +170,7 @@ function renderGalleryItem(index) {
     video.src = item.src;
     video.poster = item.poster;
 
-    video.controls = true;
+    video.controls = false;
     video.autoplay = true;
     video.muted = true;
     video.loop = true;
@@ -145,9 +178,20 @@ function renderGalleryItem(index) {
 
     zoomContainer.appendChild(video);
   }
+
+  scale = 1;
+  posX = 0;
+  posY = 0;
+
+  applyTransform();
 }
 
+/* =========================
+   OPEN ZOOM
+========================= */
 function openGallery(index) {
+  if (!gallery.length) return;
+
   currentIndex = index;
 
   renderGalleryItem(currentIndex);
@@ -158,65 +202,114 @@ function openGallery(index) {
 /* =========================
    OPENERS
 ========================= */
+if (isDetailPage) {
+  document
+    .querySelectorAll(".main_ph_vid_img")[0]
+    ?.addEventListener("click", () => openGallery(0));
 
-// Main image
-document
-  .querySelectorAll(".main_ph_vid_img")[0]
-  .addEventListener("click", () => {
-    openGallery(0);
-  });
+  document
+    .querySelector(".pom")
+    ?.addEventListener("click", () => openGallery(1));
 
-// Before / After
-document.querySelector(".pom").addEventListener("click", () => {
-  openGallery(1);
-});
-
-// Video
-document
-  .querySelectorAll(".main_ph_vid_img")[1]
-  .addEventListener("click", () => {
-    openGallery(2);
-  });
+  document
+    .querySelectorAll(".main_ph_vid_img")[1]
+    ?.addEventListener("click", () => openGallery(2));
+}
 
 /* =========================
-   PREVIOUS
+   WHEEL ZOOM
 ========================= */
+zoomContainer.addEventListener("wheel", (e) => {
+  e.preventDefault();
 
-prevBtn.addEventListener("click", (e) => {
+  const zoomSpeed = 0.1;
+
+  scale += e.deltaY < 0 ? zoomSpeed : -zoomSpeed;
+
+  scale = Math.min(Math.max(scale, 1), 4);
+
+  applyTransform();
+});
+
+/* =========================
+   DRAG (ONLY WHEN ZOOMED)
+========================= */
+zoomContainer.addEventListener("mousedown", (e) => {
+  if (scale <= 1) return;
+
+  isDragging = true;
+
+  startX = e.clientX - posX;
+  startY = e.clientY - posY;
+});
+
+window.addEventListener("mousemove", (e) => {
+  if (!isDragging || scale <= 1) return;
+
+  posX = e.clientX - startX;
+  posY = e.clientY - startY;
+
+  applyTransform();
+});
+
+window.addEventListener("mouseup", () => {
+  isDragging = false;
+});
+
+/* =========================
+   PREV / NEXT
+========================= */
+prevBtn?.addEventListener("click", (e) => {
   e.stopPropagation();
 
-  currentIndex =
-    (currentIndex - 1 + gallery.length) %
-    gallery.length;
+  currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+
+  renderGalleryItem(currentIndex);
+});
+
+nextBtn?.addEventListener("click", (e) => {
+  e.stopPropagation();
+
+  currentIndex = (currentIndex + 1) % gallery.length;
 
   renderGalleryItem(currentIndex);
 });
 
 /* =========================
-   NEXT
+   CLOSE ZOOM
 ========================= */
-
-nextBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-
-  currentIndex =
-    (currentIndex + 1) %
-    gallery.length;
-
-  renderGalleryItem(currentIndex);
-});
-
-/* =========================
-   CLOSE
-========================= */
-
-zoom.addEventListener("click", (e) => {
-  if (
-    e.target === zoom ||
-    e.target === zoomContainer
-  ) {
+zoom?.addEventListener("click", (e) => {
+  if (e.target === zoom || e.target === zoomContainer) {
     zoom.classList.remove("active");
 
     zoomContainer.innerHTML = "";
+
+    scale = 1;
+    posX = 0;
+    posY = 0;
   }
 });
+
+const videoWrapper = document.querySelectorAll(".main_ph_vid_img")[1];
+const video = videoWrapper.querySelector("video");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // ENTER VIEW → restart + play
+        video.currentTime = 0;
+        video.play();
+      } else {
+        // EXIT VIEW → stop + reset
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  },
+  {
+    threshold: 0.05, // play when 60% visible (adjust if you want)
+  },
+);
+
+observer.observe(videoWrapper);
