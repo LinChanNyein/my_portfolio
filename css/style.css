@@ -1252,6 +1252,7 @@ textarea {
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(10px);
+  background-color: var(--primary-transperant);
   gap: 50px;
 }
 
@@ -1266,7 +1267,55 @@ textarea {
 }
 
 .zooming_image span {
+  width: auto;
+  height: auto;
+  padding: 5px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zooming_image span div {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  overflow: hidden;
+}
+
+.zooming_image span div .arrow_div {
+  position: absolute;
+  left: -5px;
+  width: auto;
+  height: 100%;
+  display: flex;
+}
+
+.zooming_image span div .arrow_div svg {
+  width: 50px;
+  height: 50px;
+  fill: var(--secondary);
+}
+
+.zooming_image_prev .arrow_div {
+  transition: transform 0.3s ease;
+}
+
+.zooming_image_prev:hover .arrow_div {
+  transform: translateX(-50px);
+}
+
+.zooming_image_next .arrow_div {
+  transition: transform 0.3s ease;
+  transform: translateX(-50px);
+}
+
+.zooming_image_next:hover .arrow_div {
+  transform: translateX(0px);
 }
 
 .zooming_image_div img {

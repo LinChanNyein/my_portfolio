@@ -31,6 +31,111 @@ const content = {
     poster: "img/manipulation-ori/fisherman.jpg",
     text: "...",
   },
+
+  swamp: {
+    title: "Swamp",
+    images: [
+      "img/manipulation-ori/swamp.jpg",
+      "img/manipulation-ori/swamp_raw.jpg",
+    ],
+    raw_final: [
+      "img/manipulation-ori/swamp.jpg",
+      "img/manipulation-ori/swamp_raw.jpg",
+    ],
+    video: "vid/swamp.mp4",
+    poster: "img/manipulation-ori/swamp.jpg",
+    text: "...",
+  },
+
+  behind_the_curtain: {
+    title: "Behind the Curtain",
+    images: [
+      "img/manipulation-ori/masterpiece.jpg",
+      "img/manipulation-ori/masterpiece_raw.jpg",
+    ],
+    raw_final: [
+      "img/manipulation-ori/masterpiece.jpg",
+      "img/manipulation-ori/masterpiece_raw.jpg",
+    ],
+    video: "vid/masterpiece.mp4",
+    poster: "img/manipulation-ori/masterpiece.jpg",
+    text: "...",
+  },
+
+  down_bad: {
+    title: "Down Bad",
+    images: [
+      "img/manipulation-ori/downbad.jpg",
+      "img/manipulation-ori/downbad_raw.jpg",
+    ],
+    raw_final: [
+      "img/manipulation-ori/downbad.jpg",
+      "img/manipulation-ori/downbad_raw.jpg",
+    ],
+    video: "vid/downbad.mp4",
+    poster: "img/manipulation-ori/downbad.jpg",
+    text: "...",
+  },
+
+  cat: {
+    title: "Cat",
+    images: [
+      "img/manipulation-ori/cat.jpg",
+      "img/manipulation-ori/cat_raw.jpg",
+    ],
+    raw_final: [
+      "img/manipulation-ori/cat.jpg",
+      "img/manipulation-ori/cat_raw.jpg",
+    ],
+    video: "vid/cat.mp4",
+    poster: "img/manipulation-ori/cat.jpg",
+    text: "...",
+  },
+
+  a_bank: {
+    title: "A Bank",
+    images: [
+      "img/manipulation-ori/monopoly.jpg",
+      "img/manipulation-ori/monopoly_raw.jpg",
+    ],
+    raw_final: [
+      "img/manipulation-ori/monopoly.jpg",
+      "img/manipulation-ori/monopoly_raw.jpg",
+    ],
+    video: "vid/monopoly.mp4",
+    poster: "img/manipulation-ori/monopoly.jpg",
+    text: "...",
+  },
+
+  tiger_beer: {
+    title: "Tiger Beer",
+    images: [
+      "img/manipulation-ori/tiger.jpg",
+      "img/manipulation-ori/tiger_raw.jpg",
+    ],
+    raw_final: [
+      "img/manipulation-ori/tiger.jpg",
+      "img/manipulation-ori/tiger_raw.jpg",
+    ],
+    video: "vid/tiger.mp4",
+    poster: "img/manipulation-ori/tiger.jpg",
+    text: "...",
+  },
+
+  dreamio: {
+    title: "Dreamio",
+    images: [
+      "img/manipulation-ori/dream.jpg",
+      "img/manipulation-ori/dream_raw.jpg",
+    ],
+    raw_final: [
+      "img/manipulation-ori/dream.jpg",
+      "img/manipulation-ori/dream_raw.jpg",
+    ],
+    video: "vid/dream.mp4",
+    poster: "img/manipulation-ori/dream.jpg",
+    text: "...",
+  },
 };
 
 /* =========================
