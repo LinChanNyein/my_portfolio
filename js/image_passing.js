@@ -136,6 +136,21 @@ const content = {
     poster: "img/manipulation-ori/dream.jpg",
     text: "...",
   },
+
+  big_brother: {
+    title: "Big Brother",
+    images: [
+      "img/manipulation-ori/eyes.jpg",
+      "img/manipulation-ori/eyes_raw.jpg",
+    ],
+    raw_final: [
+      "img/manipulation-ori/eyes.jpg",
+      "img/manipulation-ori/eyes_raw.jpg",
+    ],
+    video: "vid/eyes.mp4",
+    poster: "img/manipulation-ori/eyes.jpg",
+    text: "...",
+  },
 };
 
 /* =========================
