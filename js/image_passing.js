@@ -4,10 +4,7 @@
 const content = {
   peace_above_terror: {
     title: "Peace Above Terror",
-    images: [
-      "img/manipulation-ori/croco.jpg",
-      "img/manipulation-ori/croco_raw.jpg",
-    ],
+    images: ["img/manipulation-ori/croco.jpg"],
     raw_final: [
       "img/manipulation-ori/croco.jpg",
       "img/manipulation-ori/croco_raw.jpg",
@@ -19,10 +16,7 @@ const content = {
 
   unseen: {
     title: "Unseen",
-    images: [
-      "img/manipulation-ori/fisherman.jpg",
-      "img/manipulation-ori/fisherman_raw.jpg",
-    ],
+    images: ["img/manipulation-ori/fisherman.jpg"],
     raw_final: [
       "img/manipulation-ori/fisherman.jpg",
       "img/manipulation-ori/fisherman_raw.jpg",
@@ -34,10 +28,7 @@ const content = {
 
   swamp: {
     title: "Swamp",
-    images: [
-      "img/manipulation-ori/swamp.jpg",
-      "img/manipulation-ori/swamp_raw.jpg",
-    ],
+    images: ["img/manipulation-ori/swamp.jpg"],
     raw_final: [
       "img/manipulation-ori/swamp.jpg",
       "img/manipulation-ori/swamp_raw.jpg",
@@ -47,12 +38,21 @@ const content = {
     text: "...",
   },
 
+  tech_ace: {
+    title: "Tech Ace",
+    images: ["img/manipulation-ori/tech.jpg"],
+    raw_final: [
+      "img/manipulation-ori/tech.jpg",
+      "img/manipulation-ori/tech_raw.jpg",
+    ],
+    video: "vid/tech.mp4",
+    poster: "img/manipulation-ori/tech.jpg",
+    text: "...",
+  },
+
   behind_the_curtain: {
     title: "Behind the Curtain",
-    images: [
-      "img/manipulation-ori/masterpiece.jpg",
-      "img/manipulation-ori/masterpiece_raw.jpg",
-    ],
+    images: ["img/manipulation-ori/masterpiece.jpg"],
     raw_final: [
       "img/manipulation-ori/masterpiece.jpg",
       "img/manipulation-ori/masterpiece_raw.jpg",
@@ -66,7 +66,7 @@ const content = {
     title: "Down Bad",
     images: [
       "img/manipulation-ori/downbad.jpg",
-      "img/manipulation-ori/downbad_raw.jpg",
+      "img/manipulation-ori/downbad_ts.jpg",
     ],
     raw_final: [
       "img/manipulation-ori/downbad.jpg",
@@ -79,10 +79,7 @@ const content = {
 
   cat: {
     title: "Cat",
-    images: [
-      "img/manipulation-ori/cat.jpg",
-      "img/manipulation-ori/cat_raw.jpg",
-    ],
+    images: ["img/manipulation-ori/cat.jpg"],
     raw_final: [
       "img/manipulation-ori/cat.jpg",
       "img/manipulation-ori/cat_raw.jpg",
@@ -94,10 +91,7 @@ const content = {
 
   a_bank: {
     title: "A Bank",
-    images: [
-      "img/manipulation-ori/monopoly.jpg",
-      "img/manipulation-ori/monopoly_raw.jpg",
-    ],
+    images: ["img/manipulation-ori/monopoly.jpg"],
     raw_final: [
       "img/manipulation-ori/monopoly.jpg",
       "img/manipulation-ori/monopoly_raw.jpg",
@@ -109,10 +103,7 @@ const content = {
 
   tiger_beer: {
     title: "Tiger Beer",
-    images: [
-      "img/manipulation-ori/tiger.jpg",
-      "img/manipulation-ori/tiger_raw.jpg",
-    ],
+    images: ["img/manipulation-ori/tiger.jpg"],
     raw_final: [
       "img/manipulation-ori/tiger.jpg",
       "img/manipulation-ori/tiger_raw.jpg",
@@ -124,10 +115,7 @@ const content = {
 
   dreamio: {
     title: "Dreamio",
-    images: [
-      "img/manipulation-ori/dream.jpg",
-      "img/manipulation-ori/dream_raw.jpg",
-    ],
+    images: ["img/manipulation-ori/dream.jpg"],
     raw_final: [
       "img/manipulation-ori/dream.jpg",
       "img/manipulation-ori/dream_raw.jpg",
@@ -139,10 +127,7 @@ const content = {
 
   big_brother: {
     title: "Big Brother",
-    images: [
-      "img/manipulation-ori/eyes.jpg",
-      "img/manipulation-ori/eyes_raw.jpg",
-    ],
+    images: ["img/manipulation-ori/eyes.jpg"],
     raw_final: [
       "img/manipulation-ori/eyes.jpg",
       "img/manipulation-ori/eyes_raw.jpg",
@@ -198,8 +183,31 @@ if (isDetailPage) {
     document.querySelector(".mani_text_header").textContent = data.title;
     document.querySelector(".mani_text_para").textContent = data.text;
 
-    document.querySelectorAll(".main_ph_vid_img")[0].querySelector("img").src =
-      data.images[0];
+    const container = document.querySelector(".main_ph_vid_verti");
+
+    // FIRST IMAGE (always exists)
+    const firstBox = document.querySelector(".main_ph_vid_img");
+    firstBox.querySelector("img").src = data.images[0];
+
+    // SECOND IMAGE (only if exists)
+    if (data.images[1]) {
+      let secondBox = document.querySelector(".main_ph_vid_img_1");
+
+      // create if not already in HTML
+      if (!secondBox) {
+        secondBox = document.createElement("div");
+        secondBox.className = "main_ph_vid_img_1";
+
+        const img = document.createElement("img");
+        secondBox.appendChild(img);
+
+        // insert before pom (so layout stays correct)
+        const pom = document.querySelector(".pom");
+        container.insertBefore(secondBox, pom);
+      }
+
+      secondBox.querySelector("img").src = data.images[1];
+    }
 
     const pom = document.querySelector(".pom");
     pom.querySelector(".base").src = data.raw_final[0];
@@ -326,6 +334,10 @@ if (isDetailPage) {
   document
     .querySelectorAll(".main_ph_vid_img")[0]
     ?.addEventListener("click", () => openGallery(0));
+
+  // document
+  //   .querySelectorAll(".main_ph_vid_img_1")
+  //   ?.addEventListener("click", () => openGallery(0));
 
   document
     .querySelector(".pom")
