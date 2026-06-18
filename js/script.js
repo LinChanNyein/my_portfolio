@@ -2,6 +2,7 @@
    LOAD NAVBAR
 ========================= */
 
+// Navbar
 fetch("navbar.html")
   .then((res) => res.text())
   .then((data) => {
@@ -15,15 +16,19 @@ fetch("navbar.html")
 
     const dot = document.querySelector(".cursor-dot");
 
-    if (!dot) {
-      console.error("cursor-dot not found in navbar.html");
-      return;
+    if (dot) {
+      document.addEventListener("mousemove", (e) => {
+        dot.style.left = e.clientX + "px";
+        dot.style.top = e.clientY + "px";
+      });
     }
+  });
 
-    document.addEventListener("mousemove", (e) => {
-      dot.style.left = e.clientX + "px";
-      dot.style.top = e.clientY + "px";
-    });
+// Footer
+fetch("footer.html")
+  .then((res) => res.text())
+  .then((data) => {
+    document.getElementById("footer").innerHTML = data;
   });
 
 /* =========================
